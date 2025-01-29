@@ -1,0 +1,163 @@
+#
+# Copyright 2020-2022 the original author or authors.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+
+#-----------------------------------------------------------------------------------------------------------------------
+# Spring settings
+#-----------------------------------------------------------------------------------------------------------------------
+spring:
+  application:
+    name: microdms-service
+  servlet:
+    multipart:
+      enabled: true
+      # Threshold after which files are written to disk.
+      file-size-threshold: 2MB
+      max-file-size: 350MB
+      max-request-size: 360MB
+  cloud:
+    openfeign:
+      client:
+        config:
+          default:
+            connect-timeout: 10000
+            read-timeout: 120000
+            logger-level: basic
+
+
+#-----------------------------------------------------------------------------------------------------------------------
+# System settings
+#-----------------------------------------------------------------------------------------------------------------------
+system.time-zone: Europe/Budapest
+
+
+#-----------------------------------------------------------------------------------------------------------------------
+# Crypto settings
+#-----------------------------------------------------------------------------------------------------------------------
+crypto.secret: secret
+
+
+#-----------------------------------------------------------------------------------------------------------------------
+# Server settings
+#-----------------------------------------------------------------------------------------------------------------------
+server:
+  fqdn: localhost
+  #external-url: http://microdms.example.com
+  external-url: http://localhost:8489
+  port: 80
+  ssl:
+    enabled: false
+    key-store: classpath:jks/server-keystore.jks
+    key-store-password: changeit
+    key-alias: localhost
+    key-password: changeit
+
+    trust-store: classpath:jks/client-truststore.jks
+    trust-store-password: changeit
+
+  error:
+    includeException: true
+    includeStacktrace: NEVER
+    includeMessage: ALWAYS
+
+#-----------------------------------------------------------------------------------------------------------------------
+# Admin settings
+#-----------------------------------------------------------------------------------------------------------------------
+admin:
+  keystore-admin-enabled: true
+  copyright: perit.hu (c) 2025
+  default-site-url: /app/browser
+  default-site-root-filename: index.html
+  admin-gui-url: /admin-gui
+
+
+
+#-----------------------------------------------------------------------------------------------------------------------
+# Security settings
+#-----------------------------------------------------------------------------------------------------------------------
+security:
+  allowed-origins: "https://demo.microdms.com"
+  allowed-headers: "*"
+  allowed-methods: "OPTIONS, GET, POST, PUT, DELETE, PATCH"
+  swagger-access: "*"
+  management-endpoints-access: "*"
+  admin-gui-access: "*"
+  admin-endpoints-access: "*"
+
+
+#-----------------------------------------------------------------------------------------------------------------------
+# JWT token
+#-----------------------------------------------------------------------------------------------------------------------
+jwt:
+  private-key-alias: localhost
+  private-key-encryptedPassword: tVIVFj+lZIxGqMjc3Q9jkg==
+  public-key-alias: localhost
+  expiration-in-minutes: 1440
+
+
+#-----------------------------------------------------------------------------------------------------------------------
+# Role -> permission mapping
+#-----------------------------------------------------------------------------------------------------------------------
+rolemap:
+  # ADMIN
+  ROLE_ADMIN:
+    - GET_CONFIG
+    - APPLY_CONFIG
+
+  # USER
+  ROLE_USER:
+    - CREATE_DOCUMENT
+    - READ_DOCUMENT
+    - UPDATE_DOCUMENT
+    - DELETE_DOCUMENT
+    - GET_DOCUMENT_INFO
+    - GET_DOCUMENT_KEYWORDS
+    - QUERY_DOCUMENT
+    - UPLOAD
+    - DOWNLOAD
+    - SYSTEM_GET_DOCUMENT_TYPES
+    - SYSTEM_GET_DOCUMENT_TYPE_GROUPS
+    - SYSTEM_GET_KEYWORD_TYPES
+
+
+#-----------------------------------------------------------------------------------------------------------------------
+# MicroDmsService settings
+#-----------------------------------------------------------------------------------------------------------------------
+### Scheduling
+#seconds, minutes, hours, day-of-month, month, day-of-week, (year)
+#https://www.freeformatter.com/cron-expression-generator-quartz.html
+#17/10 in every 10 starting at 17
+#*/5 in every 5
+# In the 10th minute of every hour
+microdms-service:
+  temp-storage:
+    cron-cleanup: 0 10 * ? * *
+    absolute-path: /tmp/microdms-service/temp
+  session-timeout-secs: 120
+
+
+#-----------------------------------------------------------------------------------------------------------------------
+# Feign retry
+#-----------------------------------------------------------------------------------------------------------------------
+feign:
+  retry:
+    period: 100
+    max-period: 2000
+    max-attempts: 1
+
+
+logging:
+  config: classpath:logback-local.xml
