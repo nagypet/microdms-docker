@@ -34,3 +34,4 @@ saperion-service/data
 ./data
 jre-17.0.9
 /deployment/
+*.bkp

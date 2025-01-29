@@ -20,7 +20,7 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # Please set either password or encrypted-password property
 localuser:
-  admin.encrypted-password: ij3HfoF+WYo=
+  admin.password: admin
   user.password: user
   manager.password: manager
   hr.password: hr
