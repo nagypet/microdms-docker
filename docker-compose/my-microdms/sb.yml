@@ -43,8 +43,6 @@ services:
   #####################################################################################
     container_name: my-microdms-service
     image: my-microdms-service:latest
-    environment:
-      - DATASOURCE_MICRODMS_HOST=my-microdms-postgres
     ports:
       - "8489:80"
     volumes:
