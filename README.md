@@ -1,4 +1,4 @@
-# Deploying the MicroDMS Service (Under construction)
+# Deploying the MicroDMS Service
 
 MicroDMS provides a flexible and scalable deployment model, which covers the full range of possible usages from home-lab to multinational organizations.
 
