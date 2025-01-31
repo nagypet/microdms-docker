@@ -1,9 +1,15 @@
-<mxfile host="Electron" modified="2025-01-30T12:01:15.156Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.5.1 Chrome/124.0.6367.207 Electron/30.0.6 Safari/537.36" etag="8-cP2LnZabvfoIvKbypa" version="24.5.1" type="device" pages="3">
+<mxfile host="Electron" modified="2025-01-31T07:49:40.355Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.5.1 Chrome/124.0.6367.207 Electron/30.0.6 Safari/537.36" etag="M0z0nA45P5Px3wNzfhpi" version="24.5.1" type="device" pages="3">
   <diagram name="home-lab" id="tduypQmLKwZii7NUKNNI">
     <mxGraphModel dx="2128" dy="1003" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="eQNmIppHVZCbq9ZT3fNm-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="-116.25" y="160" width="190" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="eQNmIppHVZCbq9ZT3fNm-2" value="Docker container" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-65" y="160" width="100" height="30" as="geometry" />
+        </mxCell>
         <mxCell id="mcfOboEaPcui-k-6cUS2-1" value="microdms-service&lt;div&gt;+ frontend&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
           <mxGeometry x="-80" y="200" width="120" height="60" as="geometry" />
         </mxCell>
@@ -26,7 +32,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="mcfOboEaPcui-k-6cUS2-6" value="Browser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="-340" y="200" width="120" height="60" as="geometry" />
+          <mxGeometry x="-360" y="200" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="mcfOboEaPcui-k-6cUS2-7" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="mcfOboEaPcui-k-6cUS2-6" target="mcfOboEaPcui-k-6cUS2-1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -36,11 +42,11 @@
         </mxCell>
         <mxCell id="mcfOboEaPcui-k-6cUS2-10" value="HTTPS / REST" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="mcfOboEaPcui-k-6cUS2-7">
           <mxGeometry x="0.0571" y="1" relative="1" as="geometry">
-            <mxPoint as="offset" />
+            <mxPoint x="-14" y="1" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="mcfOboEaPcui-k-6cUS2-52" value="https://localhost:8488" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="-82.5" y="170" width="122.5" height="30" as="geometry" />
+          <mxGeometry x="-82.5" y="130" width="122.5" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
@@ -51,7 +57,7 @@
         <mxCell id="YeO6_0AcT_WhHCIgc2pZ-0" />
         <mxCell id="YeO6_0AcT_WhHCIgc2pZ-1" parent="YeO6_0AcT_WhHCIgc2pZ-0" />
         <mxCell id="Epc4p4prXqIV8AhVF7SH-0" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="YeO6_0AcT_WhHCIgc2pZ-1">
-          <mxGeometry x="-203.75" y="520" width="190" height="160" as="geometry" />
+          <mxGeometry x="-203.75" y="520" width="190" height="120" as="geometry" />
         </mxCell>
         <mxCell id="tD8enyq8D6LkTTCBvnTH-0" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="YeO6_0AcT_WhHCIgc2pZ-1">
           <mxGeometry x="90" y="520" width="190" height="120" as="geometry" />
@@ -106,7 +112,7 @@
           <mxGeometry x="-170" y="490" width="122.5" height="30" as="geometry" />
         </mxCell>
         <mxCell id="AdgIBWpH4ea0LTpEGtuw-0" value="Serving /app/browser/**" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="YeO6_0AcT_WhHCIgc2pZ-1">
-          <mxGeometry x="-172.5" y="630" width="122.5" height="30" as="geometry" />
+          <mxGeometry x="-172.5" y="650" width="122.5" height="30" as="geometry" />
         </mxCell>
         <mxCell id="UuXUOJgzF3ikbDPjRlDn-0" value="Docker container" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="YeO6_0AcT_WhHCIgc2pZ-1">
           <mxGeometry x="135" y="520" width="100" height="30" as="geometry" />
