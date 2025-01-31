@@ -53,4 +53,4 @@ microdms-service:
   temp-storage:
     cron-cleanup: 0 10 * ? * *
     absolute-path: /tmp/microdms-service/temp
-  session-timeout-secs: 120
+  license-file-path: config/perit-eval.license

@@ -58,7 +58,7 @@ services:
   microdms-app:
   #####################################################################################
     container_name: my-microdms-app
-    image: docker-registry:5000/microdms-app:latest
+    image: petyaba/microdms-app:1.0.0
     ports:
       - "8490:80"
     networks:
