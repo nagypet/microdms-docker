@@ -16,7 +16,12 @@ You need only one single docker container or the standalone version for Windows.
 
 Even in this case the backend supports HTTPS communication.
 
-Example: [docker-compose.yml](./docker-compose/my-microdms/docker-compose.yml).
+docker-compose: [docker-compose.yml](./docker-compose/my-microdms/docker-compose.yml).
+
+Starting up the containers:
+```
+docker-compose up -d
+```
 
 ## Small Business Deployment
 ![](docs/microdms_deployment-small-business.drawio.png)
@@ -25,6 +30,13 @@ In this scenario the frontend is deployed separately on Nginx, which proxies the
 
 TLS will be terminated by Nginx.
 
+docker-compose: [sb.yml](./docker-compose/my-microdms/sb.yml).
+
+Starting up the containers:
+```
+docker-compose -f sb.yml up -d
+```
+
 A working example: https://demo.microdms.com 
 
 ## Scalable Deployment
@@ -32,6 +44,7 @@ A working example: https://demo.microdms.com
 
 This deployment is recommended for use in **Kubernetes** or **Openshift**, if the organization has many hundred users. The very same images can be used for building the pods. It provides **horizontal scalability** both on backend and frontend side. Only the hardware resources can limit the maximal user count.
 
+More details coming soon.
 
 ## Building a customized MicroDMS image
 Please see `./docker-build/build-docker-image.sh`.

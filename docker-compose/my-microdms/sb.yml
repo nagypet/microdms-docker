@@ -1,0 +1,72 @@
+version: '3.7'
+
+networks:
+  microdms-net:
+    driver: bridge
+
+services:
+
+  #####################################################################################
+  postgres:
+  #####################################################################################
+    container_name: my-microdms-postgres
+    image: postgres:17.2-alpine3.21
+    shm_size: 1g
+    environment:
+      - POSTGRES_PASSWORD=sa
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - microdms-net
+    restart: unless-stopped
+
+
+  #####################################################################################
+  pgadmin:
+  #####################################################################################
+    container_name: my-microdms-pgadmin
+    image: dpage/pgadmin4:8.14.0
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=user@example.com
+      - PGADMIN_DEFAULT_PASSWORD=sa
+    ports:
+      - "5410:80"
+    volumes:
+      - pgadmin:/var/lib/pgadmin:rw
+    networks:
+      - microdms-net
+    restart: unless-stopped
+
+
+  #####################################################################################
+  microdms-service:
+  #####################################################################################
+    container_name: my-microdms-service
+    image: my-microdms-service:latest
+    environment:
+      - DATASOURCE_MICRODMS_HOST=my-microdms-postgres
+    ports:
+      - "8489:80"
+    volumes:
+      - microdms-storage:/file-storage:rw
+    networks:
+      - microdms-net
+    restart: unless-stopped
+
+
+  #####################################################################################
+  microdms-app:
+  #####################################################################################
+    container_name: my-microdms-app
+    image: docker-registry:5000/microdms-app:latest
+    ports:
+      - "8490:80"
+    networks:
+      - microdms-net
+    restart: unless-stopped
+
+
+volumes:
+  postgres:
+  pgadmin:
+  microdms-storage:
