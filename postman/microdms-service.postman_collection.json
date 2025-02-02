@@ -1,0 +1,1176 @@
+{
+	"info": {
+		"_postman_id": "155efaa2-be10-47ee-ab29-a4926c196701",
+		"name": "microdms-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6222653"
+	},
+	"item": [
+		{
+			"name": "authentication",
+			"item": [
+				{
+					"name": "authenticate admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var jsonData = pm.response.json();\r",
+									"postman.setGlobalVariable(\"token\", jsonData.jwt);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "1nn0dOx",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{microdms}}/api/spvitamin/authenticate",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"spvitamin",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "authenticate manager",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var jsonData = pm.response.json();\r",
+									"postman.setGlobalVariable(\"token\", jsonData.jwt);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "manager",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "manager",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{microdms}}/api/spvitamin/authenticate",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"spvitamin",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "authenticate hr",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var jsonData = pm.response.json();\r",
+									"postman.setGlobalVariable(\"token\", jsonData.jwt);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "hr",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "hr",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{microdms}}/api/spvitamin/authenticate",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"spvitamin",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "authenticate fin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var jsonData = pm.response.json();\r",
+									"postman.setGlobalVariable(\"token\", jsonData.jwt);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "cust2",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "cust2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{microdms}}/api/spvitamin/authenticate",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"spvitamin",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "documents",
+			"item": [
+				{
+					"name": "createDocument Employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var jsonData = pm.response.json();\r",
+									"if (jsonData.location !== null) {\r",
+									"    postman.setGlobalVariable(\"lastCreatedDocumentUrl\", jsonData.location);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"documentTypeName\": \"Employee\",\r\n    \"docRef\": \"{{fileRef}}\",\r\n    \"fileName\": \"excelfile.pdf\",\r\n    \"keywords\": [\r\n        {\r\n            \"name\": \"FirstName\",\r\n            \"value\": \"John\"\r\n        },\r\n        {\r\n            \"name\": \"LastName\",\r\n            \"value\": \"Doe\"\r\n        },\r\n        {\r\n            \"name\": \"Birthdate\",\r\n            \"value\": \"1999-12-01\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microdms}}/api/documents",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createDocument Multivalue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var jsonData = pm.response.json();\r",
+									"if (jsonData.location !== null) {\r",
+									"    postman.setGlobalVariable(\"lastCreatedDocumentUrl\", jsonData.location);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"documentTypeName\": \"KeywordTest\",\r\n    \"docRef\": \"{{fileRef}}\",\r\n    \"fileName\": \"excelfile.pdf\",\r\n    \"keywords\": [\r\n        {\r\n            \"name\": \"Alphanumeric\",\r\n            \"values\": [\r\n                \"alma\",\r\n                \"körte\"\r\n            ]\r\n        },\r\n        {\r\n            \"name\": \"Integer\",\r\n            \"values\": [\r\n                123,\r\n                124\r\n            ]\r\n        },\r\n        {\r\n            \"name\": \"Long\",\r\n            \"values\": [\r\n                123456789,\r\n                1234567890\r\n            ]\r\n        },\r\n        {\r\n            \"name\": \"Date\",\r\n            \"values\": [\r\n                \"2024-11-30\",\r\n                \"2024-12-01\"\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microdms}}/api/documents",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "readDocument",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microdms}}/api/documents/8365730",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"documents",
+								"8365730"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "readDocument (last created)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "username",
+								"value": "{{archive_username}}",
+								"type": "text"
+							},
+							{
+								"key": "password",
+								"value": "{{archive_password}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{lastCreatedDocumentUrl}}",
+							"host": [
+								"{{lastCreatedDocumentUrl}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateDocument",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var jsonData = pm.response.json();\r",
+									"if (jsonData.location !== null) {\r",
+									"    postman.setGlobalVariable(\"lastCreatedDocumentUrl\", jsonData.location);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"docId\": \"10001\",\r\n    \"keywords\": [\r\n        {\r\n            \"name\": \"Alphanumeric\",\r\n            \"value\": \"updated\"\r\n        }\r\n    ],\r\n    \"docRef\": \"{{fileRef}}\",\r\n    \"fileName\": \"updated.pdf\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microdms}}/api/documents",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateDocument only keywords",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var jsonData = pm.response.json();\r",
+									"if (jsonData.location !== null) {\r",
+									"    postman.setGlobalVariable(\"lastCreatedDocumentUrl\", jsonData.location);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"docId\": \"10001\",\r\n    \"keywords\": [\r\n        {\r\n            \"name\": \"Alphanumeric\",\r\n            \"value\": \"test\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microdms}}/api/documents",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteDocument",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\"LOGICAL\"",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microdms}}/api/documents/12407517",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"documents",
+								"12407517"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getDocumentKeywords",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microdms}}/api/documents/8365730/keywords",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"documents",
+								"8365730",
+								"keywords"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getDocumentInfo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "username",
+								"value": "{{archive_username}}",
+								"type": "text"
+							},
+							{
+								"key": "password",
+								"value": "{{archive_password}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{microdms}}/api/documents/8365730/info?revisionId=-1",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"documents",
+								"8365730",
+								"info"
+							],
+							"query": [
+								{
+									"key": "revisionId",
+									"value": "-1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "files",
+			"item": [
+				{
+					"name": "upload",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var jsonData = pm.response.json();\r",
+									"postman.setGlobalVariable(\"fileRef\", jsonData.location);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/np/github/microdms-project/test-data/SZEKK.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{microdms}}/api/files",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"files"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "system",
+			"item": [
+				{
+					"name": "getDocumentTypes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{microdms}}/api/system/documenttypes",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"documenttypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getDocumentTypesInGroup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{microdms}}/api/system/documenttypes?documentTypeGroupName=Test",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"documenttypes"
+							],
+							"query": [
+								{
+									"key": "documentTypeGroupName",
+									"value": "Test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getDocumentTypeGroups",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{microdms}}/api/system/documenttypegroups",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"documenttypegroups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getKeywordTypes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{microdms}}/api/system/keywordtypes?documentTypeName=Employee",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"keywordtypes"
+							],
+							"query": [
+								{
+									"key": "documentTypeName",
+									"value": "Employee"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "config",
+			"item": [
+				{
+					"name": "getConfig",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{microdms}}/api/config",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"config"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "applyConfig",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/np/github/microdms-project/test-data/microdms-config.yaml"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{microdms}}/api/config",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"config"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "query",
+			"item": [
+				{
+					"name": "queryDocument EQ",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"where\": [\r\n        {\r\n            \"property\": \"Document.Type\",\r\n            \"relation\": \"<>\",\r\n            \"value\": \"Employee\"\r\n        },\r\n        {\r\n            \"property\": \"Document.ID\",\r\n            \"relation\": \"=\",\r\n            \"value\": 19202\r\n        }\r\n    ],\r\n    \"orderBy\": {\r\n        \"property\": \"Alphanumeric\",\r\n        \"direction\": \"ASC\"\r\n    },\r\n    \"include\": [\"Alphanumeric\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microdms}}/api/query?page=0",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"query"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "queryDocument IN",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"where\": [\r\n        {\r\n            \"property\": \"Alphanumeric\",\r\n            \"relation\": \"IN\",\r\n            \"values\": [\r\n                \"ID_163\",\r\n                \"ID_164\",\r\n                \"ID_165\"\r\n            ]\r\n        }\r\n    ],\r\n    \"orderBy\": {\r\n        \"property\": \"DateTime\",\r\n        \"direction\": \"ASC\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microdms}}/api/query?size=3",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"query"
+							],
+							"query": [
+								{
+									"key": "size",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "queryDocument GT",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"where\": [\r\n        {\r\n            \"property\": \"Long\",\r\n            \"relation\": \">=\",\r\n            \"value\": \"990\"\r\n        }\r\n    ],\r\n    \"orderBy\": {\r\n        \"property\": \"DateTime\",\r\n        \"direction\": \"DESC\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microdms}}/api/query?size=10",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"query"
+							],
+							"query": [
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "queryDocument BW",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"where\": [\r\n        {\r\n            \"property\": \"Date\",\r\n            \"relation\": \"BETWEEN\",\r\n            \"values\": [\r\n                \"2025-01-10\",\r\n                \"2025-01-20\"\r\n            ]\r\n        },\r\n        {\r\n            \"property\": \"Alphanumeric\",\r\n            \"relation\": \"=\",\r\n            \"value\": \"id_166\"\r\n        }\r\n    ],\r\n    \"orderBy\": {\r\n        \"property\": \"Alphanumeric\",\r\n        \"direction\": \"ASC\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microdms}}/api/query",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"query"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "queryDocument LIKE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"where\": [\r\n        {\r\n            \"property\": \"Alphanumeric\",\r\n            \"relation\": \"LIKE\",\r\n            \"value\": \"%555%\"\r\n        },\r\n        {\r\n            \"property\": \"Document.Type\",\r\n            \"relation\": \"=\",\r\n            \"value\": \"PerformanceTest\"\r\n        }\r\n    ],\r\n    \"orderBy\": {\r\n        \"property\": \"DateTime\",\r\n        \"direction\": \"DESC\"\r\n    },\r\n    \"include\": [\r\n        \"DateTime\", \"FloatingPoint\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microdms}}/api/query?page=2",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"query"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "queryDocument All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"where\": [\r\n        {\r\n            \"property\": \"Document.ID\",\r\n            \"relation\": \"<>\",\r\n            \"values\": null\r\n        }\r\n    ],\r\n    \"orderBy\": {\r\n        \"property\": \"Document.ID\",\r\n        \"direction\": \"DESC\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microdms}}/api/query?page=10&size=50",
+							"host": [
+								"{{microdms}}"
+							],
+							"path": [
+								"api",
+								"query"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "10"
+								},
+								{
+									"key": "size",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
