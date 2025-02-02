@@ -1,0 +1,314 @@
+#------------------------------------------------------------------------
+media:
+  #------------------------------------------------------------------------
+  # LOCAL_DRIVE
+  - kind: Media
+    apiVersion: v1
+    name: file-storage
+    mediaType: LOCAL_DRIVE
+    connection:
+      type: LOCAL_DRIVE
+      path: /file-storage
+    spaceLimit: 1 GB
+#------------------------------------------------------------------------
+storages:
+  #------------------------------------------------------------------------
+  # PERF_TEST_STORAGE
+  - kind: Storage
+    apiVersion: v1
+    name: PERF_TEST_STORAGE
+    media: file-storage
+  # LONG_TERM_STORAGE
+  - kind: Storage
+    apiVersion: v1
+    name: LONG_TERM_STORAGE
+    media: file-storage
+#------------------------------------------------------------------------
+keywords:
+  #------------------------------------------------------------------------
+  # Alphanumeric
+  - kind: Keyword
+    apiVersion: v1
+    name: Alphanumeric
+    dataType: ALPHANUMERIC
+    dataTypeOption: ALPHANUMERIC_UPPERCASE
+    length: 50
+  # Numeric9
+  - kind: Keyword
+    apiVersion: v1
+    name: Integer
+    dataType: INTEGER
+  # Numeric20
+  - kind: Keyword
+    apiVersion: v1
+    name: Long
+    dataType: LONG
+  # Date
+  - kind: Keyword
+    apiVersion: v1
+    name: Date
+    dataType: DATE
+  # DateTime
+  - kind: Keyword
+    apiVersion: v1
+    name: DateTime
+    dataType: DATETIME
+  # FloatingPoint
+  - kind: Keyword
+    apiVersion: v1
+    name: FloatingPoint
+    dataType: FLOATING_POINT
+  # Boolean
+  - kind: Keyword
+    apiVersion: v1
+    name: Boolean
+    dataType: BOOLEAN
+  # FirstName
+  - kind: Keyword
+    apiVersion: v1
+    name: FirstName
+    dataType: ALPHANUMERIC
+    dataTypeOption: ALPHANUMERIC_MIXEDCASE
+    length: 30
+  # LastName
+  - kind: Keyword
+    apiVersion: v1
+    name: LastName
+    dataType: ALPHANUMERIC
+    dataTypeOption: ALPHANUMERIC_MIXEDCASE
+    length: 30
+  # Birthdate
+  - kind: Keyword
+    apiVersion: v1
+    name: Birthdate
+    dataType: DATE
+  # Address
+  - kind: Keyword
+    apiVersion: v1
+    name: Address
+    dataType: ALPHANUMERIC
+    dataTypeOption: ALPHANUMERIC_MIXEDCASE
+    length: 100
+  # Salery
+  - kind: Keyword
+    apiVersion: v1
+    name: Salery
+    dataType: INTEGER
+  # InvoiceNumber
+  - kind: Keyword
+    apiVersion: v1
+    name: InvoiceNumber
+    dataType: ALPHANUMERIC
+    dataTypeOption: ALPHANUMERIC_MIXEDCASE
+    length: 20
+  # InvoiceDate
+  - kind: Keyword
+    apiVersion: v1
+    name: InvoiceDate
+    dataType: DATE
+  # DueDate
+  - kind: Keyword
+    apiVersion: v1
+    name: DueDate
+    dataType: DATE
+  # Currency
+  - kind: Keyword
+    apiVersion: v1
+    name: Currency
+    dataType: ALPHANUMERIC
+    dataTypeOption: ALPHANUMERIC_UPPERCASE
+    length: 3
+  # IssuerName
+  - kind: Keyword
+    apiVersion: v1
+    name: IssuerName
+    dataType: ALPHANUMERIC
+    dataTypeOption: ALPHANUMERIC_MIXEDCASE
+    length: 100
+  # IssuerAddress
+  - kind: Keyword
+    apiVersion: v1
+    name: IssuerAddress
+    dataType: ALPHANUMERIC
+    dataTypeOption: ALPHANUMERIC_MIXEDCASE
+    length: 100
+  # IssuerContactPhone
+  - kind: Keyword
+    apiVersion: v1
+    name: IssuerContactPhone
+    dataType: ALPHANUMERIC
+    dataTypeOption: ALPHANUMERIC_UPPERCASE
+    length: 20
+  # IssuerVATNumber
+  - kind: Keyword
+    apiVersion: v1
+    name: IssuerVATNumber
+    dataType: ALPHANUMERIC
+    dataTypeOption: ALPHANUMERIC_UPPERCASE
+    length: 20
+  # IssuerAccountNumber
+  - kind: Keyword
+    apiVersion: v1
+    name: IssuerAccountNumber
+    dataType: ALPHANUMERIC
+    dataTypeOption: ALPHANUMERIC_UPPERCASE
+    length: 40
+  # CustomerName
+  - kind: Keyword
+    apiVersion: v1
+    name: CustomerName
+    dataType: ALPHANUMERIC
+    dataTypeOption: ALPHANUMERIC_MIXEDCASE
+    length: 100
+  # CustomerAddress
+  - kind: Keyword
+    apiVersion: v1
+    name: CustomerAddress
+    dataType: ALPHANUMERIC
+    dataTypeOption: ALPHANUMERIC_MIXEDCASE
+    length: 100
+  # CustomerContactPhone
+  - kind: Keyword
+    apiVersion: v1
+    name: CustomerContactPhone
+    dataType: ALPHANUMERIC
+    dataTypeOption: ALPHANUMERIC_UPPERCASE
+    length: 20
+  # CustomerVATNumber
+  - kind: Keyword
+    apiVersion: v1
+    name: CustomerVATNumber
+    dataType: ALPHANUMERIC
+    dataTypeOption: ALPHANUMERIC_UPPERCASE
+    length: 20
+  # InvoiceDescription
+  - kind: Keyword
+    apiVersion: v1
+    name: InvoiceDescription
+    dataType: ALPHANUMERIC
+    dataTypeOption: ALPHANUMERIC_MIXEDCASE
+    length: 100
+  # NetPrice
+  - kind: Keyword
+    apiVersion: v1
+    name: NetPrice
+    dataType: FLOATING_POINT
+  # Tax
+  - kind: Keyword
+    apiVersion: v1
+    name: Tax
+    dataType: FLOATING_POINT
+  # TotalAmount
+  - kind: Keyword
+    apiVersion: v1
+    name: TotalAmount
+    dataType: FLOATING_POINT
+
+#------------------------------------------------------------------------
+documentTypes:
+  #------------------------------------------------------------------------
+  # KeywordTest
+  - kind: DocumentType
+    apiVersion: v1
+    name: KeywordTest
+    storage: LONG_TERM_STORAGE
+    keywords:
+      - name: Alphanumeric
+      - name: Integer
+      - name: Long
+      - name: Date
+      - name: DateTime
+      - name: FloatingPoint
+      - name: Boolean
+      - name: AGE
+        flags:
+          - READONLY
+          - HIDDEN
+  # PerformanceTest
+  - kind: DocumentType
+    apiVersion: v1
+    name: PerformanceTest
+    storage: PERF_TEST_STORAGE
+    keywords:
+      - name: Long
+      - name: Alphanumeric
+      - name: FloatingPoint
+      - name: DateTime
+      - name: Date
+  # Employee
+  - kind: DocumentType
+    apiVersion: v1
+    name: Employee
+    storage: LONG_TERM_STORAGE
+    keywords:
+      - name: FirstName
+      - name: LastName
+      - name: Birthdate
+      - name: Address
+      - name: Salery
+  # Invoice
+  - kind: DocumentType
+    apiVersion: v1
+    name: Invoice
+    storage: LONG_TERM_STORAGE
+    keywords:
+      - name: InvoiceNumber
+      - name: InvoiceDescription
+      - name: InvoiceDate
+      - name: DueDate
+      - name: IssuerName
+      - name: IssuerAddress
+      - name: IssuerContactPhone
+      - name: IssuerVATNumber
+      - name: IssuerAccountNumber
+      - name: CustomerName
+      - name: CustomerAddress
+      - name: CustomerContactPhone
+      - name: CustomerVATNumber
+      - name: Currency
+      - name: NetPrice
+      - name: Tax
+      - name: TotalAmount
+#------------------------------------------------------------------------
+documentTypeGroups:
+  #------------------------------------------------------------------------
+  # Test
+  - kind: DocumentTypeGroup
+    apiVersion: v1
+    name: Test
+    documentTypes:
+      - KeywordTest
+      - PerformanceTest
+  # HR Documents
+  - kind: DocumentTypeGroup
+    apiVersion: v1
+    name: HR Documents
+    documentTypes:
+      - Employee
+  # FIN Documents
+  - kind: DocumentTypeGroup
+    apiVersion: v1
+    name: FIN Documents
+    documentTypes:
+      - Invoice
+#------------------------------------------------------------------------
+usergroups:
+  #------------------------------------------------------------------------
+  - kind: UserGroup
+    apiVersion: v1
+    name: MANAGER
+    documentTypes:
+      - KeywordTest
+      - PerformanceTest
+      - Employee
+      - Invoice
+  - kind: UserGroup
+    apiVersion: v1
+    name: HR
+    documentTypes:
+      - Employee
+  - kind: UserGroup
+    apiVersion: v1
+    name: FIN
+    documentTypes:
+      - Invoice

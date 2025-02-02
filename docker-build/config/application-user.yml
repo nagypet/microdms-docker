@@ -33,29 +33,29 @@ localuser:
 roles:
   # Site admin
   ROLE_ADMIN:
-    #groups: IDXHU_Architects
+    #groups: any AD group
     users: nagy_peter,admin
     includes: ROLE_USER
 
   # User
   ROLE_USER:
-    #groups: IDXHU_Architects
+    #groups: any AD group
     users: nagy_peter,user
 
   # MANAGER
   ROLE_MANAGER:
-    #groups: IDXHU_Architects
+    #groups: any AD group
     users: manager
     includes: ROLE_USER
 
   # HR
   ROLE_HR:
-    #groups: IDXHU_Architects
+    #groups: any AD group
     users: hr
     includes: ROLE_USER
 
   # FIN
   ROLE_FIN:
-    #groups: IDXHU_Architects
+    #groups: any AD group
     users: fin
     includes: ROLE_USER
