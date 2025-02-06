@@ -1,4 +1,13 @@
-# Deploying the MicroDMS Service
+# MicroDMS Service
+
+## Releases
+### 2025-01-31 1.0.0
+- First version with basic functionality
+
+### 2025-02-06 1.1.0
+- File encryption/decryption 
+
+## Deploying the MicroDMS Service
 
 MicroDMS provides a flexible and scalable deployment model, which covers the full range of possible usages from home-lab to multinational organizations.
 
