@@ -1,4 +1,4 @@
-FROM petyaba/microdms-service:1.0.0
+FROM petyaba/microdms-service:1.1.0
 
 WORKDIR /usr/src/microdms/bin
 
