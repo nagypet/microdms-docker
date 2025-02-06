@@ -5,6 +5,7 @@
 - First version with basic functionality
 
 ### 2025-02-06 1.1.0
+- Bug fixed in the DocumentStorageServiceImpl
 - File encryption/decryption 
 
 ## Deploying the MicroDMS Service
