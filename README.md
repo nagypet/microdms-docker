@@ -1,12 +1,15 @@
 # MicroDMS Service
 
 ## Releases
-### 2025-01-31 1.0.0
-- First version with basic functionality
+### 1.2.0 - 2025-02-09
+- System config is validated and can be updated
 
-### 2025-02-06 1.1.0
+### 1.1.0 - 2025-02-06
 - Bug fixed in the DocumentStorageServiceImpl
-- File encryption/decryption 
+- File encryption/decryption
+
+### 1.0.0 - 2025-01-31
+- First version with basic functionality
 
 ## Deploying the MicroDMS Service
 

@@ -220,7 +220,6 @@ documentTypes:
       - name: DateTime
       - name: FloatingPoint
       - name: Boolean
-      - name: AGE
         flags:
           - READONLY
           - HIDDEN
