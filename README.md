@@ -1,6 +1,9 @@
 # MicroDMS Service
 
 ## Releases
+### 1.3.0 - 2025-02-10
+- Sample configuration extended with AD authentication
+
 ### 1.2.0 - 2025-02-09
 - System config is validated and can be updated
 
