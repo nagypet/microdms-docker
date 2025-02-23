@@ -8,7 +8,7 @@ media:
     mediaType: LOCAL_DRIVE
     connection:
       type: LOCAL_DRIVE
-      path: /file-storage
+      path: /filestorage
     spaceLimit: 1 GB
 #------------------------------------------------------------------------
 storages:
