@@ -60,6 +60,7 @@ admin:
 microdms-service:
   temp-storage:
     cron-cleanup: 0 10 * ? * *
+    # The absolute-path must contain the word 'filestorage'
     absolute-path: /filestorage/temp
   license-file-path: config/perit-eval.license
   file-encryption-key: ddoCSq95UsqtgLMFQ4JpPmEMPYBucheWInO/QTOlJmI=
