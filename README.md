@@ -70,6 +70,9 @@ In the `/image` folder there are prepared build files for docker-compose and k8s
 
 Please see the `/k8s` folder for sample manifest files.
 
+MicroDMS running in Kubernetes with 2 backend replicas and 1 frontend replica.
+![](docs/05_k9s.png)
+
 ## Starting the application
 
 After the container started up, the database have to be created. Please follow these steps.
