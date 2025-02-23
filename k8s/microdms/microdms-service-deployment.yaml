@@ -93,7 +93,7 @@ spec:
               value: k8s-test.perit.local
           volumeMounts:
             - name: microdms-volume
-              mountPath: /file-storage
+              mountPath: /filestorage
       volumes:
         - name: microdms-volume
           persistentVolumeClaim:
