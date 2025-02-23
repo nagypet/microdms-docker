@@ -1,0 +1,44 @@
+#--------------------------------------------------------------------------
+# Service
+#--------------------------------------------------------------------------
+apiVersion: v1
+kind: Service
+metadata:
+  name: microdms-app
+  namespace: microdms
+spec:
+  type: ClusterIP
+  selector:
+    component: microdms-app
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: http
+---
+#--------------------------------------------------------------------------
+# Deployment
+#--------------------------------------------------------------------------
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microdms-app
+  namespace: microdms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: microdms-app
+  template:
+    metadata:
+      labels:
+        component: microdms-app
+    spec:
+      containers:
+        - name: microdms-app
+          image: docker-registry:5000/my-microdms-app-k8s:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP

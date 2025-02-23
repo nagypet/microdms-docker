@@ -1,0 +1,100 @@
+#--------------------------------------------------------------------------
+# Service
+#--------------------------------------------------------------------------
+apiVersion: v1
+kind: Service
+metadata:
+  name: microdms-service
+  namespace: microdms
+  labels:
+    monitored: prometheus
+spec:
+  type: ClusterIP
+  selector:
+    component: microdms-service
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: http
+---
+#--------------------------------------------------------------------------
+# PersistentVolumeClaim
+#--------------------------------------------------------------------------
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: microdms-volume-claim
+  namespace: microdms
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+---
+#--------------------------------------------------------------------------
+# Deployment
+#--------------------------------------------------------------------------
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microdms-service
+  namespace: microdms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: microdms-service
+  template:
+    metadata:
+      labels:
+        component: microdms-service
+    spec:
+      containers:
+        - name: microdms-service
+          image: docker-registry:5000/my-microdms-service-k8s:latest
+          imagePullPolicy: Always
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /actuator/health/liveness
+              port: 80
+              scheme: HTTP
+            periodSeconds: 300
+            timeoutSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 80
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+          startupProbe:
+            failureThreshold: 30
+            httpGet:
+              path: /actuator/health/startup
+              port: 80
+              scheme: HTTP
+            periodSeconds: 10
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          env:
+            - name: PROTOCOL
+              value: https
+            - name: APP
+              value: microdms-service
+            - name: NAMESPACE
+              value: microdms
+            - name: DOMAIN
+              value: k8s-test.perit.local
+          volumeMounts:
+            - name: microdms-volume
+              mountPath: /file-storage
+      volumes:
+        - name: microdms-volume
+          persistentVolumeClaim:
+            claimName: microdms-volume-claim

@@ -15,6 +15,4 @@
 # limitations under the License.
 #
 
-#docker build -t docker-registry:5000/microdms-app:latest .
-#docker push docker-registry:5000/microdms-app:latest
-docker build --no-cache -t my-microdms-service:latest .
+docker build -t my-microdms-service:latest .

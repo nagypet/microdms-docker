@@ -1,0 +1,74 @@
+#--------------------------------------------------------------------------
+# Service
+#--------------------------------------------------------------------------
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+  namespace: postgres
+spec:
+  type: NodePort
+  selector:
+    component: postgres
+  ports:
+    - port: 5432
+      targetPort: http
+      protocol: TCP
+      nodePort: 30900
+---
+#--------------------------------------------------------------------------
+# PersistentVolumeClaim
+#--------------------------------------------------------------------------
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-volume-claim
+  namespace: postgres
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+---
+#--------------------------------------------------------------------------
+# Deployment
+#--------------------------------------------------------------------------
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  namespace: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: postgres
+  template:
+    metadata:
+      labels:
+        component: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:17.2-alpine3.21
+          ports:
+            - name: http
+              containerPort: 5432
+              protocol: TCP
+          env:
+            - name: POSTGRES_PASSWORD
+              value: sa
+          volumeMounts:
+            - name: postgres-volume
+              mountPath: /var/lib/postgresql/data
+            - name: dshm
+              mountPath: /dev/shm
+      volumes:
+        - name: postgres-volume
+          persistentVolumeClaim:
+            claimName: postgres-volume-claim
+        - name: dshm
+          emptyDir:
+            medium: Memory
+            sizeLimit: 1Gi

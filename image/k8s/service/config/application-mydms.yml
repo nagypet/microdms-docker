@@ -21,9 +21,7 @@
 # Server settings
 #-----------------------------------------------------------------------------------------------------------------------
 server:
-  fqdn: localhost
-  #external-url: http://microdms.example.com
-  external-url: http://localhost:8489
+  external-url: ${PROTOCOL}://${APP}.${NAMESPACE}.${DOMAIN}
   port: 80
 
 
@@ -41,6 +39,16 @@ security:
 
 
 #-----------------------------------------------------------------------------------------------------------------------
+# Admin settings
+#-----------------------------------------------------------------------------------------------------------------------
+admin:
+  keystore-admin-enabled: false
+  copyright: perit.hu (c) 2025
+  default-site-url: /admin-gui
+  default-site-root-filename: index.html
+
+
+#-----------------------------------------------------------------------------------------------------------------------
 # MicroDmsService settings
 #-----------------------------------------------------------------------------------------------------------------------
 ### Scheduling
@@ -52,6 +60,6 @@ security:
 microdms-service:
   temp-storage:
     cron-cleanup: 0 10 * ? * *
-    absolute-path: /tmp/microdms-service/temp
+    absolute-path: /file-storage/temp
   license-file-path: config/perit-eval.license
   file-encryption-key: ddoCSq95UsqtgLMFQ4JpPmEMPYBucheWInO/QTOlJmI=

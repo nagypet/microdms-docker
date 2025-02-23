@@ -1,0 +1,13 @@
+#-----------------------------------------------------------------------------------------------------------------------
+# Datasource
+#-----------------------------------------------------------------------------------------------------------------------
+datasource:
+  microdms:
+    db-type: postgresql
+    host: postgres.postgres.svc.cluster.local
+    db-name: microdms
+    username: mdsa
+    # encrypted-password can be used as well.
+    password: mdsa
+    max-pool-size: 30
+    socket-timeout: 20000

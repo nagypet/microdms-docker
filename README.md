@@ -62,8 +62,13 @@ This deployment is recommended for use in **Kubernetes** or **Openshift**, if th
 
 More details coming soon.
 
-## Building a customized MicroDMS image
-Please see `./docker-build/build-docker-image.sh`.
+## Building customized images
+
+In the `/image` folder there are prepared build files for docker-compose and k8s deployments. For docker-compose only the backend must be built, but for k8s a special app image must be built too. 
+
+## Deployment onto Kubernetes
+
+Please see the `/k8s` folder for sample manifest files.
 
 ## Starting the application
 

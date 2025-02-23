@@ -1,0 +1,56 @@
+#
+# Copyright 2020-2022 the original author or authors.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+
+# This file extends or overwrites settings in the application.yml
+
+#-----------------------------------------------------------------------------------------------------------------------
+# Server settings
+#-----------------------------------------------------------------------------------------------------------------------
+server:
+  fqdn: localhost
+  external-url: http://localhost:8489
+  port: 80
+
+
+#-----------------------------------------------------------------------------------------------------------------------
+# Security settings
+#-----------------------------------------------------------------------------------------------------------------------
+security:
+  allowed-origins: "https://microdms.example.com"
+  allowed-headers: "*"
+  allowed-methods: "OPTIONS, GET, POST, PUT, DELETE, PATCH"
+  swagger-access: "*"
+  management-endpoints-access: "*"
+  admin-gui-access: "*"
+  admin-endpoints-access: "*"
+
+
+#-----------------------------------------------------------------------------------------------------------------------
+# MicroDmsService settings
+#-----------------------------------------------------------------------------------------------------------------------
+### Scheduling
+#seconds, minutes, hours, day-of-month, month, day-of-week, (year)
+#https://www.freeformatter.com/cron-expression-generator-quartz.html
+#17/10 in every 10 starting at 17
+#*/5 in every 5
+# In the 10th minute of every hour
+microdms-service:
+  temp-storage:
+    cron-cleanup: 0 10 * ? * *
+    absolute-path: /tmp/microdms-service/temp
+  license-file-path: config/perit-eval.license
+  file-encryption-key: ddoCSq95UsqtgLMFQ4JpPmEMPYBucheWInO/QTOlJmI=
