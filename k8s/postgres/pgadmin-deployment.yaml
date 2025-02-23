@@ -1,3 +1,6 @@
+#--------------------------------------------------------------------------
+# Service
+#--------------------------------------------------------------------------
 apiVersion: v1
 kind: Service
 metadata:
@@ -12,6 +15,9 @@ spec:
     component: pgadmin
   type: ClusterIP
 ---
+#--------------------------------------------------------------------------
+# PersistentVolumeClaim
+#--------------------------------------------------------------------------
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -41,7 +47,7 @@ spec:
     spec:
       containers:
         - name: pgadmin
-          image: dpage/pgadmin4:9.0.0
+          image: dpage/pgadmin4:9
           ports:
             - name: http
               containerPort: 80
@@ -53,7 +59,7 @@ spec:
               value: sa
           volumeMounts:
             - name: pgadmin-volume
-              mountPath: /pgadmin
+              mountPath: /var/lib/pgadmin
       volumes:
         - name: pgadmin-volume
           persistentVolumeClaim:
