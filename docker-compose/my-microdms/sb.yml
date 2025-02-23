@@ -46,7 +46,7 @@ services:
     ports:
       - "8489:80"
     volumes:
-      - microdms-storage:/file-storage:rw
+      - microdms-storage:/filestorage:rw
     networks:
       - microdms-net
     restart: unless-stopped
