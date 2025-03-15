@@ -1,6 +1,12 @@
 # MicroDMS Service
 
 ## Releases
+### 1.5.0 - 2025-03-15
+- Autocomplete text keywords
+
+### 1.4.0 - 2025-03-08
+- Authentication with OAuth providers
+
 ### 1.3.0 - 2025-02-10
 - Sample configuration extended with AD authentication
 
