@@ -1,11 +1,12 @@
 # MicroDMS Service
 
 ## Releases
-### 1.5.0 - 2025-03-15
+### 1.5.0 - 2025-03-16
 - Autocomplete text keywords
 - Storage subsystem refactored: 
   - storageid is stored in the `DocumentHistoryEntity`
   - folder structure changed from `storage/volume` to `volume/storage`
+- Performance optimization: lazy autocomplete in the SearchCriteriaComponentController
 
 ### 1.4.0 - 2025-03-08
 - Authentication with OAuth providers
