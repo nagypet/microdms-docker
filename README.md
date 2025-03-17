@@ -1,6 +1,10 @@
 # MicroDMS Service
 
 ## Releases
+### 1.6.0 - 2025-03-17
+- Java21
+- SpringBoot 3.4.3
+
 ### 1.5.0 - 2025-03-16
 - Autocomplete text keywords
 - Storage subsystem refactored: 
