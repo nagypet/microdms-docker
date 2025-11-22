@@ -29,6 +29,7 @@ server:
 # Security settings
 #-----------------------------------------------------------------------------------------------------------------------
 security:
+  production-mode: false
   allowed-origins: "https://microdms.example.com"
   allowed-headers: "*"
   allowed-methods: "OPTIONS, GET, POST, PUT, DELETE, PATCH"
@@ -36,6 +37,11 @@ security:
   management-endpoints-access: "*"
   admin-gui-access: "*"
   admin-endpoints-access: "*"
+  auth:
+    client-id: c3d33f8d-14f4-446b-9c78-231892b5fc40
+    allow-token-in-response: false
+    access-token-cookie-name: microdms-auth-at
+    refresh-token-cookie-name: microdms-auth-rt
 
 
 #-----------------------------------------------------------------------------------------------------------------------
