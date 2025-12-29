@@ -1,6 +1,13 @@
 # MicroDMS Service
 
 ## Releases
+
+### 1.8.8 - 2025-12-29
+- Document viewer supports application/pdf, image/jpg, image/png, application/xml, text
+- Improved security through cookie-based tokens
+- Kubernetes deployment optimized
+- Support for multiple pod deployment for scalability using redis
+
 ### 1.6.0 - 2025-03-17
 - Java21
 - SpringBoot 3.4.3
