@@ -2,6 +2,9 @@
 
 ## Releases
 
+### 1.8.9 - 2025-12-31
+- SpringBoot 4.0.1 
+
 ### 1.8.8 - 2025-12-29
 - Document viewer supports application/pdf, image/jpg, image/png, application/xml, text
 - Improved security through cookie-based tokens
